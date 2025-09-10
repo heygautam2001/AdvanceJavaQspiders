@@ -1,0 +1,36 @@
+package dml_statement_execution;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import org.postgresql.Driver;
+
+//import java.sql.Driver;
+
+public class UpdateStatement_execution {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		// load the driver
+		
+		Driver driver = new Driver();
+	    try {
+			DriverManager.registerDriver(driver);
+			System.out.println("Driver loaded");
+			
+			
+			//Create a connection 
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5433/school?user=postgres&password=root");
+			System.out.println("Done");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		};
+		
+
+	}
+
+}

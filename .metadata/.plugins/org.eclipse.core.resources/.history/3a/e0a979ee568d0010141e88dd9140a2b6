@@ -1,0 +1,60 @@
+package dql_prepareStatement_execution;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class dqlPrepareStatement {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			 Class.forName("org.postgresql.Driver");
+			 System.out.println("Driver loaded");
+			 
+			 String url = "jdbc:postgresql://localhost:5433/school";
+			 String user = "postgres";
+			 String password = "root";
+			 Connection con = DriverManager.getConnection(url , user , password);
+			 System.out.println("Connection established");
+			 
+			 // step 3 == prepare statement.
+			 
+			 String query = "select * from student where id = ?";
+			 
+			 PreparedStatement ps = con.prepareStatement(query);
+			 
+			 Scanner sc = new Scanner(System.in);
+			 
+			 System.out.println("Enter the id");
+			 int id = sc.nextInt();
+			 sc.nextLine();
+			 ps.setInt(1, id);
+			 
+			 boolean res = ps.execute();
+			 ResultSet rs = ps.getResultSet();
+			 
+			 rs.next();
+			 
+			 System.out.println(rs.getInt(id)+" "+rs.getString("name")+" "+rs.getDouble("percentage")+" "+rs.getLong("Phone")+" "+rs.getDate("dop"));
+			 
+		
+			
+			 
+			 
+			}catch(ClassNotFoundException e) {
+				System.out.println(e);
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+			
+			
+			
+
+	}
+
+}

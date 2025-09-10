@@ -1,0 +1,10 @@
+package load_register_java;
+
+public class LoadDriverDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

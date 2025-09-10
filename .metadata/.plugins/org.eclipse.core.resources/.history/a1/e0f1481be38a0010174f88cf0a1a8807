@@ -1,0 +1,42 @@
+package best_store;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class Store {
+	public static boolean connectDB(String database, String username, String password) {
+      Connection conn;
+		// Load the Driver
+		try {
+			Class.forName("org.postgresql.Driver");
+			System.out.println(" Driver loaded......");
+			System.out.println("Initializing the Database Connection....");
+
+			// Connect to the database
+			 conn = DriverManager.getConnection("jdbc:postgresql://localhost:5433/" + database + "?user="
+					+ username + "&password=" + password + "");
+			System.out.println("Connection is estalished");
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
+		return true;
+	}
+	
+	 public static boolean createSchema() {
+		 
+	 }
+
+	public static void main(String[] args) {
+		boolean res = connectDB("school", "postgres", "root");
+	}
+
+}

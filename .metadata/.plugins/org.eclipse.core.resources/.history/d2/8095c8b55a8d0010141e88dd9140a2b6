@@ -1,0 +1,84 @@
+package dml_prepareStatement_execution;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class InsertDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			 Class.forName("org.postgresql.Driver");
+			 System.out.println("Driver loaded");
+			 
+			 String url = "jdbc:postgresql://localhost:5433/school";
+			 String user = "postgres";
+			 String password = "root";
+			 Connection con = DriverManager.getConnection(url , user , password);
+			 System.out.println("Connection established");
+			 
+			 // step 3 == prepare statement.
+			 
+			 String query = "insert into student values(?,?,?,?,?)";
+			 
+			 PreparedStatement ps = con.prepareStatement(query);
+			 
+			 Scanner sc = new Scanner(System.in);
+			 
+			 System.out.println("Enter the id");
+			 int id = sc.nextInt();
+			 sc.nextLine();
+			 
+			 System.out.print("Enter the name ");
+			 String name = sc.nextLine();
+			 
+			 System.out.println("Enter the percentage : ");
+			 double perc = sc.nextDouble();
+			 sc.nextLine();
+			 
+			 System.out.println("Enter the phone ");
+			 Long phone = sc.nextLong();
+			 sc.nextLine();
+			 
+			 System.out.println("Enter the string : ");
+			 String dop = sc.nextLine();
+			 
+			 ps.setInt(1, id);
+			 ps.setString(2, name);
+			 ps.setDouble(3,perc);
+			 ps.setLong(4, phone);
+			 ps.setDate(5, Date.valueOf(dop));
+			 
+			 /*
+			 // way2 1 => execute();
+			 boolean r1 = ps.execute();
+			 System.out.println(r1);
+			 
+			 */
+			 
+			 int r2 = ps.executeUpdate();
+			 if(r2 > 0) {
+				 System.out.println("Query executed successfully");
+			 }else {
+				 System.out.println("Failed to execute query");
+			 }
+			 
+			 
+			}catch(ClassNotFoundException e) {
+				System.out.println(e);
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+			
+			
+			
+
+		
+
+	}
+
+}

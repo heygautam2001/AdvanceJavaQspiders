@@ -1,0 +1,10 @@
+package ddl_statement_execution;
+
+public class CreateTableDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

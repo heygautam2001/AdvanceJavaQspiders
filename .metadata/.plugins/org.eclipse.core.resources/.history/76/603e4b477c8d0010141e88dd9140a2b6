@@ -1,0 +1,50 @@
+package batch_execution;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class batch_execution_statement {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		try {
+		 Class.forName("org.postgresql.Driver");
+		 System.out.println("Driver loaded");
+		 
+		 String url = "jdbc:postgresql://localhost:5433/school";
+		 String user = "postgres";
+		 String password = "root";
+		 Connection con = DriverManager.getConnection(url , user , password);
+		 System.out.println("Connection established");
+		 
+		 Statement stm = con.createStatement();
+		 
+		 String query1 = "create table movie(id integer primary key , name character varying , rating double precision , price double precision)";
+		 String query2= "insert into movie values(1, 'Avenger : End game' , 9.5 , 999)";
+		 
+		 stm.addBatch(query1);
+		 stm.addBatch(query2);
+		 
+		 int[] result = stm.executeBatch();
+		 
+		 for(int r : result) {
+			 System.out.println(r);
+		 }
+		 
+		 
+		 
+		}catch(ClassNotFoundException e) {
+			System.out.println(e);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+	}
+
+}

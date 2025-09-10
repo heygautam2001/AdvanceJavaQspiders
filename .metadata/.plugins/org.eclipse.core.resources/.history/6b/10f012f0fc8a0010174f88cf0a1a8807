@@ -1,0 +1,161 @@
+package best_store;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Store {
+	static Connection conn;
+	
+	// Database Connection Code
+	
+	public static boolean connectDB(String database, String username, String password) {
+      
+		// Load the Driver
+		try {
+			Class.forName("org.postgresql.Driver");
+			System.out.println(" Driver loaded......");
+			System.out.println("Initializing the Database Connection....");
+
+			// Connect to the database
+			 conn = DriverManager.getConnection("jdbc:postgresql://localhost:5433/" + database + "?user="
+					+ username + "&password=" + password + "");
+			System.out.println("Connection is estalished");
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
+		return true;
+	}
+	
+	// Creation of the table in postgresql...
+	
+	 public static boolean createSchema(String query) {
+		 
+		 try {
+			// Create the statement ..
+			Statement stm = conn.createStatement();
+			String Query = query;
+			//Execute the query 
+			stm.execute(Query);
+			System.out.println("Query is executed successfully");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		 return true;
+	 }
+	 
+	// Insertion of the records... 
+	 public static boolean insertRecords(String query) {
+		 
+		 //Create the statement...
+		 try {
+			Statement st = conn.createStatement();
+			String Query = query;
+			//Execute the query
+			st.execute(Query);
+			System.out.println("Query is executed successfully ,  Records are inserted");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		  return true;
+	 }
+	 
+	 //Updating the Records
+	 
+	 public static boolean updateRecord(String query) {
+		 try {
+			Statement st = conn.createStatement();
+			String Query = query;
+			st.execute(Query);
+			System.out.println("Records updated succesfully");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		 return true;
+	 }
+	 
+	 // Deleting the records..
+	 
+	 public static boolean deleteRecord(String query) {
+		 try {
+			Statement st = conn.createStatement();
+			String Query = query;
+			st.execute(Query);
+			System.out.println("Records deleted succesfully");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		 return true;
+	 }
+	 
+	 // View all products
+	 
+	 public static void viewProducts(String query) {
+		 try {
+				Statement st = conn.createStatement();
+				String Query = query;
+				
+				ResultSet rs2 = st.executeQuery(query);
+				while(rs2.next()) {
+					System.out.println(rs2.getInt(1) +" "+rs2.getString("name")+" "+rs2.getDouble(3)+" "+rs2.getString("type")+" "+rs2.getInt("rating"));
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}
+			 
+		 }
+	 
+	 public static void totalPrice() {
+		 try {
+			Statement st = conn.createStatement();
+			String Query = "select sum(price) as totalprice from products";
+		   ResultSet rs =  st.executeQuery(Query);
+		     while(rs.next()) {
+		    	 System.out.println(rs.getInt("totalprice"));
+		     }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+	 }
+	 
+	 
+
+	public static void main(String[] args) {
+		boolean res = connectDB("school", "postgres", "root");
+		System.out.println(res);
+//		boolean res1 = createSchema("create table products(id integer primary key , name character varying(50) , price double precision , type character varying , rating double precision)");
+//		System.out.println(res1);
+		
+//		boolean res2 = insertRecords("insert into products values(101 , 'Vivo v5s' , 29999 , 'Electronics' , 4.3)");
+//		boolean res3 = updateRecord("update products set id = 102 where id = 101");
+		
+		viewProducts("select * from products");
+		totalPrice();
+		
+	}
+
+}

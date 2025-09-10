@@ -1,0 +1,10 @@
+package dql_prepareStatement_execution;
+
+public class dqlPrepareStatement {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

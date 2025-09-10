@@ -1,0 +1,25 @@
+package Connection;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class ConnectionDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			Class.forName("org.postgresql.Driver");
+			System.out.println("driver loaded");
+			String url = "jdbc:postgresql://localhost:5433/school?user=postgres&password=root";
+			Connection con = DriverManager.getConnection(url);
+			System.out.println("Connection done");
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}
+
+	}
+
+}

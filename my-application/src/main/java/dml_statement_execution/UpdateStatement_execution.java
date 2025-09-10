@@ -1,0 +1,65 @@
+package dml_statement_execution;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import org.postgresql.Driver;
+
+//import java.sql.Driver;
+
+public class UpdateStatement_execution {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		// load the driver
+		
+		Driver driver = new Driver();
+	    try {
+			DriverManager.registerDriver(driver);
+			System.out.println("Driver loaded");
+			
+			//Create a connection 
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5433/school?user=postgres&password=root");
+			System.out.println("Connection done");
+			
+			// create statement and execute the query..
+			
+			Statement st = con.createStatement();
+			String update = "UPDATE student SET name = 'Rohan' where id = 1";
+			String query = "INSERT INTO student VALUES(4, 'shubham' , 70.0 , 9899856146 , '2025-02-02' )";
+			int res = st.executeUpdate(query); // 1 
+			System.out.println(res);
+			if(res > 0) {
+				System.out.println("record is eexcuted");
+			}else {
+				System.out.println("failed to insert query");
+			}
+			
+			int res1 = st.executeUpdate(update);
+			if(res1>0) {
+				System.out.println("Record updated");
+			}else {
+				System.out.println("Not updated");
+			}
+			
+			
+			// EXECUTE THE QUERY
+			
+//			st.execute(upadate);
+			
+			
+
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch(Throwable e) 
+	    {
+			System.out.println(e);
+	    }
+		
+
+	}
+
+}

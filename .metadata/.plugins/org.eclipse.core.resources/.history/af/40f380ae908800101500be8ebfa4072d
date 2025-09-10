@@ -1,0 +1,14 @@
+package load_register_java;
+
+import java.sql.Driver;
+
+public class RegisterDriverDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		Driver d = new Driver();
+	
+
+	}
+
+}

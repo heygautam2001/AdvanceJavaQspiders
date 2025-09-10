@@ -1,0 +1,10 @@
+package best_store;
+
+public class StoreDriver {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

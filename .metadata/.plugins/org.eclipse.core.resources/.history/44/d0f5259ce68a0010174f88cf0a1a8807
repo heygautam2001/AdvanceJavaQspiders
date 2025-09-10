@@ -1,0 +1,64 @@
+package best_store;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Store {
+	static Connection conn;
+	public static boolean connectDB(String database, String username, String password) {
+      
+		// Load the Driver
+		try {
+			Class.forName("org.postgresql.Driver");
+			System.out.println(" Driver loaded......");
+			System.out.println("Initializing the Database Connection....");
+
+			// Connect to the database
+			 conn = DriverManager.getConnection("jdbc:postgresql://localhost:5433/" + database + "?user="
+					+ username + "&password=" + password + "");
+			System.out.println("Connection is estalished");
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
+		return true;
+	}
+	
+	 public static boolean createSchema(String query) {
+		 
+		 try {
+			
+			// Create the statement ..
+			Statement stm = conn.createStatement();
+			String Query = query;
+			
+			//Execute the query 
+			stm.execute(Query);
+			System.out.println("Query is executed successfully");
+		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		 return true;
+	 }
+
+	public static void main(String[] args) {
+		boolean res = connectDB("school", "postgres", "root");
+		System.out.println(res);
+		boolean res1 = createSchema("create table products(id integer primary key , name character varying(50) , price double precision , type character varying , rating double precision)");
+		System.out.println(res1);
+	}
+
+}
