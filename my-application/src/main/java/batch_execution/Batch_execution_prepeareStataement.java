@@ -1,0 +1,65 @@
+package batch_execution;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class Batch_execution_prepeareStataement {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		try {
+			Class.forName("org.postgresql.Driver");
+			
+			String url = "jdbc:postgresql://localhost:5433/school";
+			String user = "postgres";
+			String password = "root";
+			
+			Connection con = DriverManager.getConnection(url,user,password);
+			System.out.println("Connection Done");
+			
+			String query = "insert into movie values(?,?,?,?)";
+			
+			PreparedStatement ps = con.prepareStatement(query);
+			
+			ps.setInt(1, 2);
+			ps.setString(2, "Venom");
+			ps.setDouble(3,8.8);
+			ps.setDouble(4, 666);
+			
+			ps.addBatch();
+			
+			ps.setInt(1, 3);
+			ps.setString(2, "Terminator");
+			ps.setDouble(3,8.5);
+			
+			ps.addBatch();
+			
+			ps.setInt(1, 4);
+			ps.setString(2, "Spider Man");
+			ps.setDouble(3,8.9);
+			
+			ps.addBatch();
+			
+			int result[] = ps.executeBatch();
+			
+			for(int i :  result) {
+				System.out.println();
+			}
+			
+			
+			
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

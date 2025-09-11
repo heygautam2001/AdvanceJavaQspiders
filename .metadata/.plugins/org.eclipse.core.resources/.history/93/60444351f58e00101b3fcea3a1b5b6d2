@@ -1,0 +1,81 @@
+package batch_execution;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class BatchExecutionInsertMovie {
+	
+	public void addMovieBatch(int n) {
+		try {
+			 Class.forName("org.postgresql.Driver");
+			 System.out.println("Driver loaded");
+			 
+			 String url = "jdbc:postgresql://localhost:5433/school";
+			 String user = "postgres";
+			 String password = "root";
+			 Connection con = DriverManager.getConnection(url , user , password);
+			 System.out.println("Connection established");
+			 
+			 String query = "insert into movie values(?,?,?,?)";
+			PreparedStatement ps = con.prepareStatement(query);
+		    Scanner sc = new Scanner(System.in);
+		    
+		    
+		    int id;
+		    String name;
+		    Double rating;
+		    Double price;
+		    
+		    int i = 1;
+		    while(i <= n) {
+			
+		    System.out.println("Enter the movie id");
+		    id  = sc.nextInt();
+		    sc.nextLine();
+		    
+		    System.out.println("Enter movie name");
+		    name = sc.nextLine();
+		    
+		    System.out.println("Enter movie rating");
+		    rating = sc.nextDouble();
+		    sc.nextLine();
+		    
+		    System.out.println("Enter movie price");
+		    price = sc.nextDouble();
+		    sc.nextLine();
+		    
+		    ps.addBatch();
+		    
+		    ps.setInt(1,id);
+			ps.setString(2, name);
+			ps.setDouble(3,rating);
+			ps.setDouble(4, price);
+		    
+		    i++;
+		    
+		    }
+		    
+		    
+			
+		    int[] result = ps.executeBatch();
+		    
+		    for(int k : result) {
+		    	System.out.println(k);
+		    }
+		    
+			 
+			}catch(ClassNotFoundException e) {
+				System.out.println(e);
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+			
+	}
+	
+public static void main(String[] args) {
+	
+}
+}

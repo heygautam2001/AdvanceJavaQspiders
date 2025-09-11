@@ -1,4 +1,21 @@
 [ {
+  "version" : "9.2.0-20250911005055+0000",
+  "buildTime" : "20250911005055+0000",
+  "commitId" : "21016e5b24450605e85e31450ac735f9265b61b0",
+  "current" : false,
+  "snapshot" : true,
+  "nightly" : true,
+  "releaseNightly" : false,
+  "activeRc" : false,
+  "rcFor" : "",
+  "milestoneFor" : "",
+  "broken" : false,
+  "downloadUrl" : "https://services.gradle.org/distributions-snapshots/gradle-9.2.0-20250911005055+0000-bin.zip",
+  "checksumUrl" : "https://services.gradle.org/distributions-snapshots/gradle-9.2.0-20250911005055+0000-bin.zip.sha256",
+  "checksum" : "f81720e888d2308d4d34954b8c1329c757b883524a7abb2e9abe42303bd9c267",
+  "wrapperChecksumUrl" : "https://services.gradle.org/distributions-snapshots/gradle-9.2.0-20250911005055+0000-wrapper.jar.sha256",
+  "wrapperChecksum" : "423cb469ccc0ecc31f0e4e1c309976198ccb734cdcbb7029d4bda0f18f57e8d9"
+}, {
   "version" : "9.1.0-20250910012751+0000",
   "buildTime" : "20250910012751+0000",
   "commitId" : "2e2f28e050a545468faf8fc20d3ec3025d8bd69c",
@@ -15,23 +32,6 @@
   "checksum" : "62315942b74a0c81a07a8c3fd0939d1e65ac5504757400bf3e3eca578c586632",
   "wrapperChecksumUrl" : "https://services.gradle.org/distributions-snapshots/gradle-9.1.0-20250910012751+0000-wrapper.jar.sha256",
   "wrapperChecksum" : "76805e32c009c0cf0dd5d206bddc9fb22ea42e84db904b764f3047de095493f3"
-}, {
-  "version" : "9.2.0-20250910004642+0000",
-  "buildTime" : "20250910004642+0000",
-  "commitId" : "0d391125f2f62701a0dfd032bb32ac955494fc63",
-  "current" : false,
-  "snapshot" : true,
-  "nightly" : true,
-  "releaseNightly" : false,
-  "activeRc" : false,
-  "rcFor" : "",
-  "milestoneFor" : "",
-  "broken" : false,
-  "downloadUrl" : "https://services.gradle.org/distributions-snapshots/gradle-9.2.0-20250910004642+0000-bin.zip",
-  "checksumUrl" : "https://services.gradle.org/distributions-snapshots/gradle-9.2.0-20250910004642+0000-bin.zip.sha256",
-  "checksum" : "c337ae48f6ec3644f54fd9998f6af64c76a48ec5a34a0c6ff32c4481d798410c",
-  "wrapperChecksumUrl" : "https://services.gradle.org/distributions-snapshots/gradle-9.2.0-20250910004642+0000-wrapper.jar.sha256",
-  "wrapperChecksum" : "423cb469ccc0ecc31f0e4e1c309976198ccb734cdcbb7029d4bda0f18f57e8d9"
 }, {
   "version" : "9.1.0-rc-3",
   "buildTime" : "20250908083750+0000",
