@@ -40,14 +40,14 @@ public class InsertDemo {
 			 sc.nextLine();
 			 
 			 System.out.println("Enter the price ");
-			 Double phone = sc.nextDouble();
+			 Double price = sc.nextDouble();
 			 sc.nextLine();
 			 
 			 
 //			 ps.setInt(1, id);
 			 ps.setString(1, name);
 			 ps.setDouble(2,rating);
-			 ps.setDouble(3, phone);
+			 ps.setDouble(3, price);
 //			 ps.setDate(5, Date.valueOf(dop));
 			 
 			 /*

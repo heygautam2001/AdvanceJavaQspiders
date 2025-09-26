@@ -16,6 +16,7 @@ public class InsertStudent {
 	Connection con;
  {
 	 try {
+		 
 			// step 1 : load the driver
 			Class.forName("org.postgresql.Driver");
 			
@@ -214,8 +215,8 @@ public class InsertStudent {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		InsertStudent s = new InsertStudent();
-//		s.insertStudent();
-		s.deleteRecord();
+		s.insertStudent();
+//		s.deleteRecord();
 
 	}
 

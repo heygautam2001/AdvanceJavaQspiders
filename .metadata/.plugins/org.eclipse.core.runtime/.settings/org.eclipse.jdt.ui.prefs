@@ -45,6 +45,7 @@ java_single_line_comment,defaultValueBeforeOverriddenFromCSS=63,127,95
 java_string=23,198,163
 java_string,defaultValueBeforeOverriddenFromCSS=42,0,255
 javadocElementsStyling.darkModeDefaultColors=true
+javadocElementsStyling.enabled=false
 matchingBracketsColor=249,250,244
 matchingBracketsColor,defaultValueBeforeOverriddenFromCSS=127,0,85
 org.eclipse.jdt.internal.ui.navigator.layout=2

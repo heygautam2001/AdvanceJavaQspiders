@@ -36,7 +36,7 @@ public class InsertData {
 			
 			// Step 4 : Executing the sql queries(insert)
 			
-			String query = "insert into student values(3 , 'Abhi' , 89.4 , 9893214567 , '2025-01-01')";
+			String query = "insert into student values(7, 'vinod' , 89.4 , 9893214533 , '2025-01-02')";
 			
 			// way 1 : execute
 			// true => dql
@@ -61,6 +61,8 @@ public class InsertData {
 			e.printStackTrace();
 		}catch(Throwable e) {
 			e.printStackTrace();
+		}finally {
+			System.out.println("Query is either executed or discarded !");
 		}
 	}
 

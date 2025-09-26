@@ -10,6 +10,7 @@ public class ConnectionDemo {
 		
 		
 		// TODO Auto-generated method stub
+		// Three string method;
 		
 		try {
 		 Class.forName("org.postgresql.Driver");
@@ -26,18 +27,27 @@ public class ConnectionDemo {
 			e.printStackTrace();
 		}
 		
+		// One string method.
 		
 		try {
+			
+			// Load the driver
 			Class.forName("org.postgresql.Driver");
 			System.out.println("driver loaded");
+			
+			// Create the connection.
 			String url = "jdbc:postgresql://localhost:5433/school?user=postgres&password=root";
 			Connection con = DriverManager.getConnection(url);
 			System.out.println("Connection done");
+			
+			
 		}catch(ClassNotFoundException e) {
 			e.printStackTrace();
 		}catch(SQLException se) {
 			se.printStackTrace();
 		}
+		
+		
 
 	}
 

@@ -23,7 +23,7 @@ public class FetchDemo {
 			
 //			String query2 = "select name as student_name , id as stuid from student";
 			
-			// wqy 1 (execute()& getResultSet() )
+			// wqy1 (execute()& getResultSet() )
 			
 			boolean res = stm.execute(query); // DQL => true
 			

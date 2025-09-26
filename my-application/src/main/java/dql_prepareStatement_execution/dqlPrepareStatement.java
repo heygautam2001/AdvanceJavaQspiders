@@ -38,6 +38,7 @@ public class dqlPrepareStatement {
 			 boolean res = ps.execute();
 			 
 			 ResultSet rs = ps.getResultSet();
+			 
 			 rs.next();
 			 System.out.println(rs.getInt(1)+" "+rs.getString("name")+" "+rs.getDouble("percentage")+" "+rs.getLong("phone")+" "+rs.getDate("dop"));
 			 

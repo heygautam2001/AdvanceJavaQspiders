@@ -55,11 +55,14 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="edu.js"/>
+			<item value="edu.qs"/>
 			<item value="task1.qs"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="employee_management_sys"/>
 			<item value="jdbc_prac1"/>
 		</list>
 		<list key="projectNameTemplate">

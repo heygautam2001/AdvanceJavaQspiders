@@ -16,9 +16,8 @@ public class ConnectionProperties {
 			
 			//step2: Connection properties file
 			FileInputStream fis = new FileInputStream("/Users/gautam/Desktop/AdvanceJava/my-application/src/main/resources/data.properties");
-			
 			Properties property = new Properties();
-			
+			//Properties is a class
 			property.load(fis);
 			
 			String url = property.getProperty("url");
@@ -42,6 +41,8 @@ public class ConnectionProperties {
 		}catch(Throwable e) {
 			e.printStackTrace();
 		}
+		
+		
 	}
 
 }

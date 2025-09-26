@@ -4,4 +4,22 @@
 		<item key="width" value="600"/>
 		<item key="height" value="400"/>
 	</section>
+	<section name="RefactoringWizard.Clean Up">
+		<item key="width" value="648"/>
+		<item key="height" value="422"/>
+	</section>
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
+	</section>
+	<section name="CleanUpRefactoringWizard.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="396"/>
+		<item key="DIALOG_Y_ORIGIN" value="0"/>
+		<item key="DIALOG_WIDTH" value="648"/>
+		<item key="DIALOG_HEIGHT" value="617"/>
+		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
+	</section>
+	<section name="RefactoringStatusDialog">
+		<item key="DIALOG_WIDTH" value="800"/>
+		<item key="DIALOG_HEIGHT" value="477"/>
+		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
+	</section>
 </section>
