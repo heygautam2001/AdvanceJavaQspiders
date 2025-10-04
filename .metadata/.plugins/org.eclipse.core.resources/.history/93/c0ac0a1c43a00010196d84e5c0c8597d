@@ -1,0 +1,36 @@
+<%@page import="sun.security.pkcs11.wrapper.CK_ECDH1_DERIVE_PARAMS"%>
+<%@page import="sun.util.locale.provider.DateFormatProviderImpl"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="table.jsp">
+Number : <input type="number" name = "num">
+<input type = "submit">
+</form>
+
+<% 
+int num = Integer.parseInt(request.getParameter("num"));
+
+  for(int i = 1; i <= 10; i++){
+	  
+	  %>
+	  
+	  <h1> <%= num*i %> </h1>
+	  
+	  
+	  <% 
+	  
+  }
+
+
+
+%>
+
+</body>
+</html>

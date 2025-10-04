@@ -1,0 +1,82 @@
+package validateUser;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+@WebServlet("/validateUser")
+public class ValidateUser extends HttpServlet{
+	Connection con;
+	PreparedStatement ps;
+	Statement st;
+	@Override
+	public void init() throws ServletException {
+		// Load the Driver
+		
+		
+		try {
+			
+			Class.forName("org.postgresql.Driver");
+			System.out.println("Driver loaded");
+			
+			String url = "jdbc:postgresql://localhost:5433/servlet1";
+			String user = "postgres";
+			String pass = "root";
+			
+			con = DriverManager.getConnection(url,user,pass);
+			System.out.println("Connection Established");
+			
+			
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		int id = Integer.parseInt(req.getParameter("userId"));
+		String password = req.getParameter("password");
+		
+		try {
+			st = con.createStatement();
+			String query = "select "+id+","+password+"from user where id = "+id+" and password = "+password+"";
+			ResultSet rs = st.executeQuery(query);
+			
+			rs.next();
+			
+			System.out.println(rs.getInt("id")+" "+rs.getString("password"));
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		super.doPost(req, resp);
+	}
+
+}

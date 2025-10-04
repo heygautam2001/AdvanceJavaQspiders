@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;servlet_demo/src/main/webapp/servlet_context_login.html&apos; to &apos;servlet_context_Home.html&apos;" description="Rename resource &apos;servlet_context_login.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/servlet_context_login.html" name="servlet_context_Home.html" stamp="1759140182992" updateReferences="true"/>
+</session>

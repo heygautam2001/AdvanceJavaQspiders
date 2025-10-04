@@ -1,0 +1,63 @@
+package servlet_lifecycle;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.GenericServlet;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebServlet;
+@WebServlet("/lifecycle")
+public class LifeCycle extends GenericServlet {
+	
+	static String var1 = "Static variable";
+	String var2 = "Non-static variable";
+	
+	private static void m1() {
+		// TODO Auto-generated method stub
+		
+		System.out.println("m1() static method is called");
+		System.out.println("var1 "+var1);
+		
+}
+	private void m2() {
+		// TODO Auto-generated method stub
+		System.out.println("m2() non-static method is called");
+		System.out.println("var2 "+var2);
+
+	}
+	
+	static {
+		System.out.println("Non-static initializer is executed");
+	}
+	
+	{
+		
+		System.out.println("Static initializer is executed");
+	}
+	
+	public LifeCycle() {
+		// TODO Auto-generated constructor stub
+		System.out.println("Life constructor is executed");
+	}
+	
+@Override
+public void init() throws ServletException {
+	System.out.println("Init method is executed");
+}
+	@Override
+	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		System.out.println("service method");
+		
+	}
+	
+	PrintWriter pw;
+	
+	@Override
+	public void destroy() {
+		System.out.println("Destroy the servlet");
+	}
+
+}

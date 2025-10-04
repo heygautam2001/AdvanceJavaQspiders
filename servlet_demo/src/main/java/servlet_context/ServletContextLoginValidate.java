@@ -1,0 +1,70 @@
+package servlet_context;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+ @WebServlet("/servletContextLogin")
+public class ServletContextLoginValidate extends HttpServlet {
+	
+	Connection con;
+	PreparedStatement ps;
+	
+	@Override
+		public void init() throws ServletException {
+		try {
+			
+			Class.forName("org.postgresql.Driver");
+			System.out.println("Driver loaded");
+			
+			String url = "jdbc:postgresql://localhost:5433/servlet1";
+			String user = "postgres";
+			String pass = "root";
+			
+			con = DriverManager.getConnection(url,user,pass);
+			System.out.println("Connection Established");
+			
+			
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+ @Override
+protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	 
+	 int id = Integer.parseInt(req.getParameter("userId"));
+	    String password = req.getParameter("password");
+
+	    String query = "SELECT id, password FROM users WHERE id = ? AND password = ?";
+	    try (PreparedStatement ps = con.prepareStatement(query)) {
+	        ps.setInt(1, id);
+	        ps.setString(2, password);
+	        
+	        try (ResultSet rs = ps.executeQuery()) {
+	            if (rs.next()) {
+	                resp.getWriter().println("Login Successful");
+	            } else {
+	                resp.getWriter().println("Invalid User ID or Password");
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        resp.getWriter().println("Error while validating user.");
+	    }
+	}
+	
+}
+

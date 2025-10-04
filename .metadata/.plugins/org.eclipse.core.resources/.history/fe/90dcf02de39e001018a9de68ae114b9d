@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+    version="4.0"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:javaee="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+  <display-name>Archetype Created Web Application</display-name>
+  
+  
+  
+  
+  <welcome-file-list>
+  <welcome-file>home.html
+  </welcome-file>
+  
+  <welcome-file>
+  backup.html
+  </welcome-file>
+  
+  </welcome-file-list>
+  
+  <servlet>
+  <servlet-name>first_serv</servlet-name>
+  <servlet-class>generic_servlet.FirstServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>first_serv</servlet-name>
+  <url-pattern>/first</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  <servlet>
+  <servlet-name>emp_serv</servlet-name>
+  <servlet-class>generic_servlet.EmpServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>emp_serv</servlet-name>
+  <url-pattern>/employee</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>calc_serv</servlet-name>
+  <servlet-class>generic_servlet.calculator</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>calc_serv</servlet-name>
+  <url-pattern>/calculator</url-pattern>
+  </servlet-mapping>
+  
+  
+  <context-param>
+ <param-name>p_id</param-name>
+  <param-value>101</param-value>
+  </context-param>
+  
+  
+  <context-param>
+ <param-name>p_name</param-name>
+  <param-value>Nike-shoes</param-value>
+  </context-param>
+  
+  
+  <context-param>
+ <param-name>p_price</param-name>
+  <param-value>2500</param-value>
+  </context-param>
+  
+  
+  
+  
+  
+</web-app>
