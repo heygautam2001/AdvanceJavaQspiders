@@ -3,6 +3,7 @@ package resultset_MetaData;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Savepoint;
 import java.sql.Statement;
 
 public class RollbackDemo {
@@ -30,13 +31,15 @@ public class RollbackDemo {
 			
 			
 			int res1 = stm.executeUpdate(query1);
-			int res2 = stm.executeUpdate(query2);
+//			int res2 = stm.executeUpdate(query2);
 			
-			if(res1 > 0 && res2 > 0) {
+		Savepoint s = con.setSavepoint("query1");
+			
+			if(res1 > 0) {
 				con.commit();
 				System.out.println("All queries are commited successfully");
 			}else {
-				con.rollback();
+				con.rollback(s);
 				System.out.println("All queries are rolledbacked");
 			}
 				
