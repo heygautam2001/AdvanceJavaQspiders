@@ -1,0 +1,207 @@
+package product_crud_task;
+
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProductDao {
+
+	Connection con;
+	PreparedStatement ps;
+	Statement stm;
+	ResultSet rs;
+
+	public ProductDao() {
+
+		try {
+			Class.forName("org.postgresql.Driver");
+
+			String url = "jdbc:postgresql://localhost:5433/servlet1";
+			String user = "postgres";
+			String pass = "root";
+
+			con = DriverManager.getConnection(url, user, pass);
+			System.out.println("Connetion Done");
+
+			stm = con.createStatement();
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public List<Product> viewAllProduct() {
+
+		List<Product> products = new ArrayList<>();
+
+		String query = "select * from products";
+
+		try {
+			rs = stm.executeQuery(query);
+
+			if (rs.next()) {
+				do {
+
+					products.add(new Product(rs.getInt("id"), rs.getString("name"), rs.getDouble("price"),
+							rs.getString("type"), rs.getBytes("image")));
+
+				} while (rs.next());
+
+				return products;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
+	public byte[] getImageById(int id) {
+		String query = "select image from products where id = ?";
+
+		try {
+			ps = con.prepareStatement(query);
+
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				return rs.getBytes("image");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
+	public boolean addProduct(Product prod, InputStream is) {
+
+		String query = "insert into products(name,price,type,image)values(?,?,?,?)";
+
+		try {
+			ps = con.prepareStatement(query);
+
+			ps.setString(1, prod.getName());
+			ps.setDouble(2, prod.getPrice());
+			ps.setString(3, prod.getType());
+			ps.setBinaryStream(4, is);
+
+			if (ps.executeUpdate() > 0) {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
+
+	}
+
+	public boolean removeProduct(int id) {
+		String query = "delete from products where id = ?";
+
+		try {
+			ps = con.prepareStatement(query);
+			ps.setInt(1, id);
+
+			if (ps.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public Product viewProductById(int id) {
+		String query = "select * from products where id = ?";
+
+		try {
+			ps = con.prepareStatement(query);
+
+			ps.setInt(1, id);
+
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				return new Product(rs.getInt("id"), rs.getString("name"), rs.getDouble("price"), rs.getString("type"),
+						rs.getBytes("image"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public boolean updateProduct(Product prod, InputStream is) {
+		if (is != null) {
+			String query = "update products set name = ?  price = ? , type = ? , image = ? where id = ?";
+
+			try {
+				ps = con.prepareStatement(query);
+
+				ps.setString(1, prod.getName());
+				ps.setDouble(2, prod.getPrice());
+				ps.setString(3, prod.getType());
+				ps.setBinaryStream(4, is);
+				ps.setInt(5, prod.getId());
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			String query = "update products set name = ? , price = ?, type = ? where id = ?";
+
+			try {
+				ps = con.prepareStatement(query);
+
+				ps.setString(1, prod.getName());
+				ps.setDouble(2, prod.getPrice());
+				ps.setString(3, prod.getType());
+
+				ps.setInt(4, prod.getId());
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+		try {
+			if (ps.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public static void main(String[] args) {
+		ProductDao dao = new ProductDao();
+	}
+
+}
