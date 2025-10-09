@@ -1,6 +1,7 @@
 package product_crud_task;
 
 public class Product {
+	
 	private Integer id;
 	private String name;
 	private Double price;
