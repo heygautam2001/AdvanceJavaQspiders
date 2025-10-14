@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;many_to_many&apos; to &apos;many_to_many_uni&apos;" description="Rename resource &apos;many_to_many&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/many_to_many" name="many_to_many_uni" stamp="1760437395808" updateReferences="true"/>
+</session>

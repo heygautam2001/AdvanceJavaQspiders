@@ -1,0 +1,26 @@
+package crud_operations;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+public class FetchColumn {
+	public static void main(String[] args) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("hibernate_demo");
+		EntityManager em = emf.createEntityManager();
+		
+		Query query = em.createQuery("Select s.name from Student s");
+		
+		List<String> names =query.getResultList();
+		
+		for(String name : names) {
+			System.out.print(name+" ");
+		}
+		
+		
+	}
+
+}

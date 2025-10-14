@@ -1,0 +1,196 @@
+ package controllers;
+
+import java.util.List;
+import java.util.Scanner;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import entity.Student;
+import models.Product;
+import models.ProductDao;
+
+public class ProductController implements ProductDao {
+	
+	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("hibernate01");
+
+	@Override
+	public boolean addProduct() {
+		
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction et = em.getTransaction();
+		Scanner sc = new Scanner(System.in);
+		
+		Product p = new Product();
+		
+		System.out.println("Enter the Id :  ");
+		int id = sc.nextInt();
+		p.setId(id);
+		sc.nextLine();
+		
+		System.out.println("Enter the product name");
+		p.setName(sc.nextLine());
+		
+		System.out.println("Enter the poroduct price");
+		p.setPrice(sc.nextDouble());
+		sc.nextLine();
+		
+		System.out.println("Enter the product rating : ");
+		p.setRating(sc.nextDouble());
+		sc.nextLine();
+		
+		System.out.println("Enter the type : ");
+		p.setType(sc.nextLine());
+		
+		try {
+			et.begin();
+			em.persist(p);   // ✅ Save the Product entity
+			et.commit();
+			System.out.println("✅ Product saved successfully!");
+			return true;
+		} catch (Exception e) {
+			if (et.isActive()) et.rollback();
+			e.printStackTrace();
+			return false;
+		} finally {
+			em.close();
+		}
+
+	}
+
+	@Override
+	public void viewProduct(int id) {
+		
+		
+	}
+
+	@Override
+	public void viewAllProduct() {
+		EntityManager em = emf.createEntityManager();
+		
+		Query query =  em.createQuery("select p from Product p");
+		
+		   List <Product> products = query.getResultList();
+		
+		for(Product p : products) {
+			System.out.println(p);
+			
+		}
+		
+		
+	}
+
+	@Override
+	public boolean updateProdudct(int id) {
+		EntityManager em = emf.createEntityManager();// Step: statement/prepare statement.
+		EntityTransaction et = em.getTransaction();
+		System.out.println(emf);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter the product name");
+		String name = sc.nextLine();
+
+		System.out.println("Enter the product price : ");
+		double price = sc.nextDouble();
+		sc.nextLine();
+
+		System.out.println("Enter the rating of the product");
+		double rating = sc.nextDouble();
+
+		System.out.println("Enter type of product");
+		String type = sc.nextLine();
+		
+
+        //2 way :  finding and updating
+
+		Product p = em.find(Product.class, id);
+
+		p.setName(name);
+		p.setPrice(price);
+		p.setRating(rating);
+		p.setType(type);
+
+		et.begin();
+		em.merge(p);
+		et.commit();
+
+		return true;
+	}
+
+	@Override
+	public boolean removeProduct(int id) {
+		EntityManager em = emf.createEntityManager();// Step: statement/prepare statement.
+		EntityTransaction et = em.getTransaction();
+		System.out.println(emf);
+		
+		// finding the object and then  remove
+		
+		Product s = em.find(Product.class,id);
+		
+		et.begin();
+		em.remove(s);
+		et.commit();
+		
+		return true;
+	}
+
+	@Override
+	public void priceFilter() {
+		
+		EntityManager em = emf.createEntityManager();// Step: statement/prepare statement.
+		EntityTransaction et = em.getTransaction();
+		System.out.println(emf);
+		
+		Scanner sc = new Scanner(System.in);
+		
+		Query query = em.createQuery("select p from Product p where p.price >= ?1");
+		
+		System.out.println("Enter the price filter : ");
+		double price = sc.nextDouble();
+		query.setParameter("price", price);
+		
+        List<Product> products = query.getResultList();
+		 
+		 for(Product p : products) {
+			 System.out.println(p);
+		 }
+		
+		
+	}
+
+	@Override
+	public void ratingFilter() {
+		
+		EntityManager em = emf.createEntityManager();// Step: statement/prepare statement.
+		EntityTransaction et = em.getTransaction();
+		System.out.println(emf);
+		
+		Scanner sc = new Scanner(System.in);
+		
+		Query query = em.createQuery("select p from Product p where p.rating >= ?1");
+		
+		System.out.println("Enter the rating filter : ");
+		double rating = sc.nextDouble();
+		query.setParameter("rating", rating);
+		
+        List<Product> products = query.getResultList();
+		 
+		 for(Product p : products) {
+			 System.out.println(p);
+		 }
+		
+	}
+	
+	public static void main(String[] args) {
+		ProductDao p1 = new ProductController();
+//		p1.addProduct();
+//		p1.viewAllProduct();
+//		p1.updateProdudct(102);
+		p1.ratingFilter();
+		
+	}
+
+}

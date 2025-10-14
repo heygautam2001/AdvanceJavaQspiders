@@ -1,0 +1,41 @@
+package crud_operations;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import entity.Student;
+
+public class HqlDemo {
+	public static void main(String[] args) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("hibernate_demo");
+		EntityManager em = emf.createEntityManager();
+		
+		// where , and , or , in , is , between
+		
+		Query query = em.createQuery("select s from Student s where id = 4");
+		Student s = (Student)query.getSingleResult();
+		
+		System.out.println(s);
+		
+		Query query2 = em.createQuery("select s from Student s where s.s_perc between 60 and 85");
+		List<Student> students = query2.getResultList();
+		
+		for(Student st : students) {
+			System.out.println(st);
+		}
+		
+		Query query3 = em.createQuery("select s from Student s  where s.s_perc in(71.0,70.0)");
+		List<Student> st = query3.getResultList();
+		
+		for(Student stu : st) {
+			System.out.println(stu);
+		}
+		
+		
+	}
+
+}
