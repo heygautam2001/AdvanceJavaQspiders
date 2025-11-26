@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="/Users/gautam/Desktop/Hibernate/one_to_many_bi/src/main/java/crud/RemoveTeam.java"/>
 			<item value="/Users/gautam/Desktop/Hibernate/hibernate_demo/src/main/java/crud_operations/DynamicQueriesDemo.java"/>
 		</list>
 		<list key="projectNameTemplate">
@@ -14,6 +15,7 @@
 		</list>
 	</section>
 	<section name="MavenProjectWizardArchetypePage">
+		<item key="catalog" value="All Catalogs"/>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
 			<item value="[artifactId]-TRUNK"/>
@@ -49,10 +51,7 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
-			<item value="one_to_many_unidirectional"/>
-			<item value="one_to_one_unidirectional"/>
-			<item value="hibernate01"/>
-			<item value="hibernate_demo"/>
+			<item value="hibernate_practice"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

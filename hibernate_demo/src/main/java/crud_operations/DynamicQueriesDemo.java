@@ -12,7 +12,7 @@ import entity.Student;
 
 public class DynamicQueriesDemo {
    public static void main(String[] args) {
-	   EntityManagerFactory emf = Persistence.createEntityManagerFactory("hibernate_demo");
+	    EntityManagerFactory emf = Persistence.createEntityManagerFactory("hibernate_demo");
 		EntityManager em = emf.createEntityManager();
 		
 		// Student with id name 

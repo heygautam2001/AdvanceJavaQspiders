@@ -1,13 +1,18 @@
 package entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+//@Table(name = "myStudents") // specifies the name of the table inside the database.
 public class Student {
     @Id
 	private int id;
+//    @Column(name = "stu_name")
 	private String name;
+    
 	private double s_perc;
 	
 	public Student() {
