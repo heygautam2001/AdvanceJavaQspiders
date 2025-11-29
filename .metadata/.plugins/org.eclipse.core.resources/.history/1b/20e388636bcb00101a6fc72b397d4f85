@@ -1,0 +1,9 @@
+package edu.qs.model.exception;
+
+
+public class AcccountNotExistException extends RuntimeException {
+	
+
+	
+
+}

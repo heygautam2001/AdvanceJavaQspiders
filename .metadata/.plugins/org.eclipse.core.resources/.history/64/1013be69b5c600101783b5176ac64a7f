@@ -1,0 +1,7 @@
+package edu.qs.service;
+
+public class EmployeeServiceImp implements EmployeeService {
+	
+  EmployeeService empService;
+  
+}

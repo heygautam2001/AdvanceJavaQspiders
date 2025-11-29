@@ -1,0 +1,9 @@
+spring.application.name=spring_boot_demo
+#server.port = 8082spring.servlet.multipart.enabled=true
+
+
+spring.servlet.multipart.max-file-size=300MB
+spring.servlet.multipart.max-request-size=300MB
+spring.servlet.multipart.file-size-threshold=1KB
+
+

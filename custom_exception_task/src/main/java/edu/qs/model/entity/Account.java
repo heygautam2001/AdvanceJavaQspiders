@@ -1,0 +1,63 @@
+package edu.qs.model.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+
+@Entity
+public class Account {
+	
+	@Id
+	private String accId;
+	
+	private String name;
+	
+	private Double balance;
+	
+	public Account() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+	public Account(String accId, String name, Double balance) {
+		super();
+		this.accId = accId;
+		this.name = name;
+		this.balance = balance;
+	}
+
+
+
+	public String getAccId() {
+		return accId;
+	}
+
+	public void setAccId(String accId) {
+		this.accId = accId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
+	@Override
+	public String toString() {
+		return "Account [accId=" + accId + ", name=" + name + ", balance=" + balance + "]";
+	}
+	
+	
+
+}

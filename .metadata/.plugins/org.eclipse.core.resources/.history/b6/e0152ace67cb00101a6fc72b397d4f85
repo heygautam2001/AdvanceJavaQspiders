@@ -1,0 +1,27 @@
+package edu.qs.model.exception;
+
+import java.time.LocalTime;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class MyGlobalExceptionHandler {
+
+	@ExceptionHandler(value = InvalidBalanceInputException.class)
+	public ResponseEntity<String> InvalidBalanceInputException(InvalidBalanceInputException e) {
+		ExceptionInfo info = new ExceptionInfo();
+
+		info.setStatus(HttpStatus.BAD_REQUEST.value());
+		info.setMessage("Invalid Ammount");
+		info.setTime(LocalTime.now());
+
+		return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+
+	}
+	
+	
+
+}

@@ -1,0 +1,11 @@
+package edu.qs.service;
+
+import edu.qs.model.entity.Employee;
+
+public interface EmployeeService {
+	
+	public boolean addEmployee();
+		
+
+
+}

@@ -1,0 +1,28 @@
+package edu.qs.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ProductController {
+	@Autowired
+	ProductRepository prodRepo;
+	
+	public String addProduct(@RequestBody Product prod) {
+		
+		Product newProd = prodRepo.save(prod);
+		
+		if(newProd.getId() != null) {
+			return "Product added successfully";
+			
+		}else {
+			return "failed to add product";
+		}
+		
+	}
+	
+	
+
+}

@@ -1,0 +1,12 @@
+package edu.qs.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import edu.qs.model.repository.EmployeeRepository;
+
+public class EmployeeServiceImp implements EmployeeService {
+	
+  @Autowired
+  EmployeeRepository empRepo;
+  
+}

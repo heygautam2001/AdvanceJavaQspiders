@@ -1,0 +1,9 @@
+package edu.qs.model.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import edu.qs.model.Employee;
+
+public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
+ 
+}

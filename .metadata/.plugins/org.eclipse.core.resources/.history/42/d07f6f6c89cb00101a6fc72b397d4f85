@@ -1,0 +1,9 @@
+package edu.qs.service;
+
+import edu.qs.model.entity.Account;
+
+public interface AccountService {
+	
+	public boolean addAccount(Account account);
+
+}

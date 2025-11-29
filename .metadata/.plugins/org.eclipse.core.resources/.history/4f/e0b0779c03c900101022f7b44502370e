@@ -1,0 +1,17 @@
+package edu.qs.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import edu.qs.service.EmployeeService;
+import edu.qs.service.EmployeeServiceImp;
+
+public class EmployeeController {
+	
+	@Autowired
+	EmployeeService empService;
+	
+	
+		
+	}
+
+}

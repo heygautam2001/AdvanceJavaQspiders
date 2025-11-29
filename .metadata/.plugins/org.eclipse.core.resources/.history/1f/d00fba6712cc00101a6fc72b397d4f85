@@ -1,0 +1,72 @@
+package edu.qs.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import edu.qs.model.ResponseStructure.ResponseStructure;
+import edu.qs.model.entity.Account;
+import edu.qs.service.AccountService;
+
+@RestController
+
+public class AccountController {
+
+	@Autowired
+	AccountService accService;
+
+	@PostMapping("/account")
+	public ResponseEntity<String> addAccount(@RequestBody Account account) {
+
+		boolean ans = accService.addAccount(account);
+		if (ans) {
+			return new ResponseEntity<String>("Account added successfully", HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("Failed to add account", HttpStatus.INTERNAL_SERVER_ERROR);
+
+	}
+
+	// find Account by id
+
+	@GetMapping("/account/{id}")
+	public ResponseEntity<ResponseStructure<Account>> findAccountById(@PathVariable String id) {
+		ResponseStructure<Account> rs = new ResponseStructure<Account>();
+
+		Account account = accService.findAccountByID(id);
+		if (account != null) {
+			rs.setStatus(HttpStatus.FOUND.value());
+			rs.setMessage("Account Found Successfully");
+			rs.setData(account);
+			
+			return new ResponseEntity<ResponseStructure<Account>>(rs , HttpStatus.FOUND);
+
+		}
+		
+		rs.setStatus(HttpStatus.NOT_FOUND.value());
+		rs.setMessage("Didn't get the account");
+		rs.setData(null);
+		
+		return new ResponseEntity<ResponseStructure<Account>>(rs , HttpStatus.NOT_FOUND);
+
+	}
+	
+	
+  public ResponseEntity<ResponseStructure<List<Account>>> findAllAccount(){
+	  ResponseStructure<List<Account>> rs = new ResponseStructure<List<Account>>();
+	  List<Account> accounts = accService.findAllAccount();
+	  if(accounts.size() > 0) {
+		  rs.setStatus(HttpStatus.FOUND.value());
+		  rs.setMessage("Available accounts ");
+		  rs.setData(accounts);
+		  return new ResponseEntity<ResponseStructure<List<Account>>>(rs,HttpStatus.FOUND);
+	  }
+  }
+
+}

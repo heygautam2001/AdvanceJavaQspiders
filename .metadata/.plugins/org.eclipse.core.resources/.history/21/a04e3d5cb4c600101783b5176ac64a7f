@@ -1,0 +1,11 @@
+package edu.qs.service;
+
+import edu.qs.model.repository.EmployeeRepository;
+
+public class EmployeeService {
+	
+   EmployeeRepository empRepo;
+   
+   
+   
+}
