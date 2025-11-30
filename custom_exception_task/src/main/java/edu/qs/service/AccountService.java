@@ -13,5 +13,7 @@ public interface AccountService {
 	public List<Account> findAllAccount();
 	
 	public boolean deleteAccountById(String id);
+	
+	public boolean withdrawAmount(String id , double amount);
 
 }

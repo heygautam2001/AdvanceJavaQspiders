@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -76,19 +77,22 @@ public class AccountController {
 		return new ResponseEntity<ResponseStructure<List<Account>>>(rs, HttpStatus.NOT_FOUND);
 
 	}
-	
-	//delete account by id
+
+	// delete account by id
 	@DeleteMapping("/account/{id}")
-	public ResponseEntity<String> deleteAccountById(@PathVariable String id){
+	public ResponseEntity<String> deleteAccountById(@PathVariable String id) {
 		boolean ans = accService.deleteAccountById(id);
-		if(ans) {
-		  return new  ResponseEntity<String>("Account deleted successfully" , HttpStatus.OK);
+		if (ans) {
+			return new ResponseEntity<String>("Account deleted successfully", HttpStatus.OK);
 		}
-		return new  ResponseEntity<String>("Error in deleting Account" , HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<String>("Error in deleting Account", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
-	
-	
-	
+
+	@PutMapping("/account/{id}")
+	public ResponseEntity<String> withdrawAmount(@PathVariable String id, @RequestParam double amount) {
+
+		accService.withdrawAmount(id, amount);
+		return ResponseEntity.ok("Withdrawal successful");
+	}
 
 }

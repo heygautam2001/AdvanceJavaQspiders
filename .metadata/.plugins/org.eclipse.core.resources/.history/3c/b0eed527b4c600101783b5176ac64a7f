@@ -1,5 +1,0 @@
-package edu.qs.model.repository;
-
-public interface EmployeeRepository {
-
-}
