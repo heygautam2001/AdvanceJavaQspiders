@@ -10,7 +10,7 @@ import edu.qs.model.entity.EmployeeProfile;
 public interface EmployeeProfileRepository extends JpaRepository<EmployeeProfile, Integer> {
 	
 	// automatic custom query generation....
-	public Employee findByEmailOrPhone(String email, long phone);
+	public EmployeeProfile findByEmailOrPhone(String email, Long phone);
 	
 
 }

@@ -24,8 +24,8 @@ public class EmployeeProfileServiceImpl implements EmployeeProfileService {
 	@Override
 	public boolean isEmailOrPhoneExists(String email, Long phone) {
 
-		Employee emp = empProfileRepo.findByEmailOrPhone(email, phone);
-		if (emp != null) {
+		EmployeeProfile empProfile = empProfileRepo.findByEmailOrPhone(email, phone);
+		if (empProfile != null) {
 			return true;
 		}
 
@@ -43,7 +43,7 @@ public class EmployeeProfileServiceImpl implements EmployeeProfileService {
 				profile.setEmployee(emp);
 
 				EmployeeProfile newProfile = empProfileRepo.save(profile);
-				if (profile.getId() != null) {
+				if (newProfile.getId() != null) {
 					return true;
 				}
 			} else {
@@ -57,5 +57,6 @@ public class EmployeeProfileServiceImpl implements EmployeeProfileService {
 
 		return false;
 	}
+	
 
 }
