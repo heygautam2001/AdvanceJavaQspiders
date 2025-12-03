@@ -7,6 +7,7 @@ import edu.qs.model.entity.Employee;
 
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+
 	
 
 }

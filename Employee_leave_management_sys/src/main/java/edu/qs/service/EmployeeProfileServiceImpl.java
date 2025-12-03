@@ -1,8 +1,7 @@
 package edu.qs.service;
 
-import org.springframework.stereotype.Service;
-
-@Service
-public class EmployeeProfileServiceImpl {
+public class EmployeeProfileServiceImpl implements EmployeeProfileService{
+	
+	
 
 }

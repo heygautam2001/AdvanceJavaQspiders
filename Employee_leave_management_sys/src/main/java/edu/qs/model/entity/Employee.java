@@ -25,7 +25,7 @@ public class Employee {
 	@OneToOne(mappedBy = "employee" , cascade = CascadeType.REMOVE)
 	private EmployeeProfile empProfile;
 	
-	@OneToMany(mappedBy = "employee" , cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "employee" , cascade = CascadeType.REMOVE , orphanRemoval = true)
 	private List<Leave> leaves;
 
 	public Employee(String name) {
