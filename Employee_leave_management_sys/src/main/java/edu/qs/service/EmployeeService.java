@@ -1,7 +1,10 @@
 package edu.qs.service;
 
+import edu.qs.model.entity.Employee;
+
 public interface EmployeeService {
 	
-// public boolean isEmailOrPhoneExist(String email , Long Phone);
+	public boolean addEmployee(Employee emp);
+
  
 }
