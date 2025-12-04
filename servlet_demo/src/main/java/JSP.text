@@ -1,0 +1,34 @@
+1. JSP technology is used to create web application just like servlet technology.
+2. JSP is an extension to servlet because it provides more functionlity than servlet such as expression language , JSTL.
+3. A jsp page consists of html tags and jsp tags.
+4. The jsp pages are easier to maintain than servlet pages because we can separate design and development.
+5. It provides some additional features such as expression Language , custom tags etc.
+
+
+Advantages 
+1. Extension to servlet
+2. Easy to maibntain
+3. Fast Develeopment
+4. Less code than servlet
+
+JSP (JavaServer Pages) tags are specialized markup elements in JSP that
+enable embedding Java logic and controlling page behavior inside HTML pages.
+JSP tags fall into several main categories: directive tags, scripting elements,
+standard action tags, and custom tags, each serving specific roles in JSP development.
+
+
+Scripting Elements
+Scripting elements allow embedding Java code directly in the JSP page.
+
+Declaration tag (<%! ... %>): Declares variables and methods.
+
+Scriptlet tag (<% ... %>): Contains Java statements.
+
+Expression tag (<%= ... %>): Evaluates and outputs the value.
+
+Example:
+
+text
+<%! int count = 0; %>           <!-- Declaration -->
+<% count++; %>                  <!-- Scriptlet -->
+Welcome! You are visitor number <%= count %> <!-- Expression -->

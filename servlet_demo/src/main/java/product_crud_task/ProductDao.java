@@ -201,7 +201,7 @@ public class ProductDao {
 	}
 
 	public static void main(String[] args) {
-		ProductDao dao = new ProductDao();
+//		ProductDao dao = new ProductDao();
 	}
 
 }

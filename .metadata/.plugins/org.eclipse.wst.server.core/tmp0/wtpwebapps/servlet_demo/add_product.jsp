@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<a href="product_dashboard">Product Dashboard</a>
+<a href="product_dashboard.jsp">Product Dashboard</a>
 
 <h1>Add the product details</h1>
 

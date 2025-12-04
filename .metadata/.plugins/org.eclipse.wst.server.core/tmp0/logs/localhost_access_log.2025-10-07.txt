@@ -1,7 +1,0 @@
-127.0.0.1 - - [07/Oct/2025:15:30:24 +0530] "GET / HTTP/1.1" 404 752
-0:0:0:0:0:0:0:1 - - [07/Oct/2025:15:30:26 +0530] "GET /servlet_demo/product_home.jsp HTTP/1.1" 200 166
-0:0:0:0:0:0:0:1 - - [07/Oct/2025:15:30:26 +0530] "GET /favicon.ico HTTP/1.1" 404 763
-0:0:0:0:0:0:0:1 - - [07/Oct/2025:15:30:29 +0530] "GET /servlet_demo/prod_dashboard HTTP/1.1" 200 219
-0:0:0:0:0:0:0:1 - - [07/Oct/2025:15:30:36 +0530] "GET /servlet_demo/add_product.jsp HTTP/1.1" 200 598
-0:0:0:0:0:0:0:1 - - [07/Oct/2025:16:07:50 +0530] "POST /servlet_demo/add_product HTTP/1.1" 200 646
-0:0:0:0:0:0:0:1 - - [07/Oct/2025:16:08:00 +0530] "GET /servlet_demo/product_dashboard HTTP/1.1" 404 786

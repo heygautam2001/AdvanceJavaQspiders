@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/fetch_prod")
 public class FetchProductController extends HttpServlet {
-	
+	RequestDispatcher rd;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -22,8 +22,15 @@ public class FetchProductController extends HttpServlet {
 		
 		req.setAttribute("product", prod);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("update_product_jsp");
+		rd = req.getRequestDispatcher("update_product");
 		rd.forward(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		rd.forward(req, resp);
+		
 	}
 
 }

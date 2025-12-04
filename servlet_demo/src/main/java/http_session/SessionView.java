@@ -31,6 +31,8 @@ public class SessionView extends HttpServlet{
 			pw.println("seems you have been logged out");
 		}
 		
+		pw.println("<a href='sessionLogout'>LOGOUT SESSION</a>");
+		
 	}
 
 }

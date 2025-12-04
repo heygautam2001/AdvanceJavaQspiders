@@ -82,6 +82,22 @@
 
 
 
+<servlet>
+
+		<servlet-name>register_servlet</servlet-name>
+		<servlet-class>practice.RegisterServlet</servlet-class>
+
+	</servlet>
+
+	<servlet-mapping>
+
+		<servlet-name>register_servlet</servlet-name>
+		<url-pattern>/register</url-pattern>
+
+	</servlet-mapping>
+
+
+
 
 
 </web-app>

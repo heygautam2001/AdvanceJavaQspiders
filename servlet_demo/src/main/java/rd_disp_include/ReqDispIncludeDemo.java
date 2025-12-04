@@ -26,9 +26,10 @@ public class ReqDispIncludeDemo extends HttpServlet{
 			pw.print("Logged In");
 		}else {
 			pw.print("Login authentication failed");
+			rd.include(req, resp);
 		}
 		
-		rd.include(req, resp);
+		
 		
 	}
 
