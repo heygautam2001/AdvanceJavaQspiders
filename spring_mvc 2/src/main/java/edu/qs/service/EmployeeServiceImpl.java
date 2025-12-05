@@ -1,0 +1,5 @@
+package edu.qs.service;
+
+public class EmployeeServiceImpl {
+
+}
