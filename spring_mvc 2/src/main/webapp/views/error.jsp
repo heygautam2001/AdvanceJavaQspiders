@@ -14,8 +14,6 @@ if(exception != null){
 	
 	out.print(exception);
 	
-	
-	
 }
 
 %>
